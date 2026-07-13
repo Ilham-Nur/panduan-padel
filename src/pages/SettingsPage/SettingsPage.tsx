@@ -1,3 +1,4 @@
+import { getPublicAssetUrl } from "../../app/assets";
 import { Card } from "../../components/Card/Card";
 import { Icon } from "../../components/Icon/Icon";
 import communityLogo from "../../../assets/the-padel$-logo.jpeg";
@@ -13,7 +14,7 @@ export function SettingsPage() {
       </section>
 
       <Card as="section" className="info-hero-card" aria-label="Brand aplikasi">
-        <img className="info-hero-card__logo" src="/brand/skorpadelku-logo.png" alt="SkorPadelKu" />
+        <img className="info-hero-card__logo" src={getPublicAssetUrl("brand/skorpadelku-logo.png")} alt="SkorPadelKu" />
         <div className="info-hero-card__body">
           <span className="eyebrow">Versi 0.1.0</span>
           <h3>SkorPadelKu</h3>
