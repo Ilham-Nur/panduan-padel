@@ -1,0 +1,202 @@
+.home-page__intro {
+  padding-top: var(--space-4);
+}
+
+.home-page__intro h2 {
+  margin: 0;
+  color: var(--color-text-strong);
+  font: var(--font-headline-lg);
+}
+
+.home-page__intro p {
+  max-width: 520px;
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font: var(--font-body-lg);
+}
+
+.home-page__cta {
+  width: 100%;
+}
+
+.home-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.home-section-heading h2 {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-strong);
+  font: var(--font-headline-md);
+}
+
+.home-page__continue,
+.home-page__menu {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.home-page__continue-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.home-menu-card {
+  min-height: 112px;
+  border-radius: var(--radius-sheet);
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-ambient);
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast);
+}
+
+.home-menu-card:active {
+  transform: scale(0.99);
+  box-shadow: var(--shadow-sm);
+}
+
+.home-menu-card:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary-accent) 65%, transparent);
+  outline-offset: 3px;
+}
+
+.home-menu-card__icon {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radius-card);
+  display: grid;
+  place-items: center;
+  background: var(--color-secondary-container);
+  color: var(--color-text-muted);
+}
+
+.home-menu-card__body {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.home-menu-card__body strong {
+  color: var(--color-text);
+  font: var(--font-body-lg-strong);
+}
+
+.home-menu-card__body span {
+  color: var(--color-text-muted);
+  font: var(--font-body-md);
+}
+
+.home-summary-card {
+  min-height: 140px;
+  border-radius: var(--radius-sheet);
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-ambient);
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast);
+}
+
+.home-summary-card:active {
+  transform: scale(0.99);
+  box-shadow: var(--shadow-sm);
+}
+
+.home-summary-card:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary-accent) 65%, transparent);
+  outline-offset: 3px;
+}
+
+.home-summary-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-card);
+  display: grid;
+  place-items: center;
+  align-self: start;
+  background: var(--color-primary-accent);
+  color: var(--color-text-strong);
+}
+
+.home-summary-card__body {
+  min-width: 0;
+  display: grid;
+  gap: var(--space-1);
+}
+
+.home-summary-card__body strong {
+  color: var(--color-text-strong);
+  font: var(--font-body-lg-strong);
+  overflow-wrap: anywhere;
+}
+
+.home-summary-card__body span:not(.eyebrow) {
+  color: var(--color-text-muted);
+  font: var(--font-body-md);
+}
+
+.home-summary-card__stat {
+  grid-column: 2;
+  width: max-content;
+  min-width: 84px;
+  border-radius: var(--radius-card);
+  display: grid;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-low);
+}
+
+.home-summary-card__stat span {
+  color: var(--color-text-muted);
+  font: var(--font-label-caps);
+}
+
+.home-summary-card__stat strong {
+  color: var(--color-text-strong);
+  font: 700 16px / 22px "Inter", Arial, sans-serif;
+}
+
+.home-summary-card__action {
+  grid-column: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-primary);
+  font: var(--font-button);
+}
+
+.home-summary-card__action .icon {
+  font-size: 22px;
+}
+
+@media (min-width: 520px) {
+  .home-summary-card {
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+  }
+
+  .home-summary-card__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .home-summary-card__stat {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+
+  .home-summary-card__action {
+    grid-column: 2;
+  }
+}

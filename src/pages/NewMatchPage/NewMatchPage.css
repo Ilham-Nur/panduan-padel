@@ -1,0 +1,58 @@
+.score-mode-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.score-mode-card {
+  min-height: 136px;
+  border-radius: var(--radius-sheet);
+  display: grid;
+  grid-template-columns: 68px 1fr var(--size-touch-target);
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-ambient);
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast);
+}
+
+.score-mode-card:active {
+  transform: scale(0.99);
+  box-shadow: var(--shadow-sm);
+}
+
+.score-mode-card:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary-accent) 65%, transparent);
+  outline-offset: 3px;
+}
+
+.score-mode-card__icon {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-card);
+  display: grid;
+  place-items: center;
+  background: var(--color-secondary-container);
+  color: var(--color-text-muted);
+}
+
+.score-mode-card__content {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.score-mode-card__content strong {
+  color: var(--color-text);
+  font: var(--font-headline-md);
+}
+
+.score-mode-card__content span:last-child {
+  color: var(--color-text-muted);
+  font: var(--font-body-md);
+}
+
+.score-mode-card__arrow {
+  color: var(--color-primary);
+}

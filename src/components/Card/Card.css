@@ -1,0 +1,16 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-surface-container) 72%, transparent);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-ambient);
+  padding: var(--space-4);
+}
+
+.card--interactive {
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast);
+}
+
+.card--interactive:active {
+  transform: scale(0.99);
+  box-shadow: var(--shadow-sm);
+}

@@ -1,0 +1,55 @@
+{
+  "name": "SkorPadelKu",
+  "short_name": "SkorPadelKu",
+  "description": "PWA penghitung skor dan panduan rules padel untuk pemula.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f9fb",
+  "theme_color": "#446900",
+  "categories": ["sports", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/skorpadelku-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/skorpadelku-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Skor 21",
+      "short_name": "Skor 21",
+      "description": "Buka scoreboard Skor 21.",
+      "url": "/match/score-21",
+      "icons": [
+        {
+          "src": "/icons/skorpadelku-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Padel Standar",
+      "short_name": "Standar",
+      "description": "Buka scoreboard Padel Standar.",
+      "url": "/match/standard",
+      "icons": [
+        {
+          "src": "/icons/skorpadelku-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

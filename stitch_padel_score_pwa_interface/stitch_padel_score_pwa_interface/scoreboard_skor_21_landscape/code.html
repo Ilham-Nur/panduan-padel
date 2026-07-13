@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape" name="viewport"/>
+<title>Skor 21 - Live Score</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#dae2fd",
+                        "primary": "#446900",
+                        "tertiary-fixed-dim": "#b9c7e0",
+                        "surface-container": "#eceef0",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#121f00",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#515f74",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c2cab0",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#0d1c2f",
+                        "outline": "#727a64",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#3a485c",
+                        "surface-dim": "#d8dadc",
+                        "tertiary-fixed": "#d5e3fd",
+                        "tertiary-container": "#c5d3ec",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#dae2fd",
+                        "inverse-surface": "#2d3133",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-tint": "#446900",
+                        "inverse-primary": "#98da27",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#98da27",
+                        "primary-fixed": "#b2f746",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "on-secondary-container": "#5c647a",
+                        "on-surface-variant": "#424936",
+                        "on-primary-container": "#416400",
+                        "on-tertiary-container": "#4d5b70",
+                        "on-primary-fixed-variant": "#334f00",
+                        "background": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#565e74",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface": "#191c1e",
+                        "primary-container": "#a3e635",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "touch-target-min": "48px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "container-padding": "20px"
+                    },
+                    "fontFamily": {
+                        "score-display": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "score-display-mobile": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "score-display": ["96px", { "lineHeight": "100px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "score-display-mobile": ["64px", { "lineHeight": "64px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { overscroll-behavior-y: none; }
+        .touch-feedback:active { transform: scale(0.98); transition: transform 0.1s; }
+        /* Force landscape styles if possible, though mostly relies on device orientation */
+        @media (orientation: portrait) {
+            .landscape-warning { display: flex !important; }
+            .app-content { display: none !important; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden flex flex-col font-body-md select-none">
+<!-- Portrait Warning -->
+<div class="landscape-warning hidden fixed inset-0 z-50 bg-surface-container flex-col items-center justify-center p-8 text-center">
+<span class="material-symbols-outlined text-6xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">screen_rotation</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Mohon Putar Perangkat</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Aplikasi ini dioptimalkan untuk tampilan lanskap (mendatar).</p>
+</div>
+<!-- App Content -->
+<div class="app-content flex flex-col h-full w-full max-w-7xl mx-auto">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim w-full top-0 flex items-center justify-between px-container-padding h-touch-target-min w-full max-w-7xl mx-auto flex-shrink-0 z-10 shadow-sm">
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-start text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Skor 21</h1>
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-end text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Main Dashboard Area (3 Columns) -->
+<main class="flex-1 flex flex-row overflow-hidden p-gutter gap-gutter">
+<!-- Left Column: Tim A Score Card -->
+<section class="flex-1 bg-surface-container-lowest rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-container flex flex-col items-center justify-center p-4 touch-feedback cursor-pointer relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary-container opacity-0 group-active:opacity-10 transition-opacity duration-150"></div>
+<div class="absolute top-4 left-4 right-4 flex justify-between items-start w-full px-4">
+<div class="flex flex-col items-center w-full">
+<span class="font-headline-md text-headline-md text-on-surface mb-1">Tim A</span>
+<div class="flex items-center gap-2 text-on-surface-variant bg-surface-container-low px-3 py-1 rounded-full">
+<span class="font-body-md text-body-md truncate max-w-[120px]">Pemain 1 &amp; Pemain 2</span>
+<span class="material-symbols-outlined text-sm">edit</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex-1 flex items-center justify-center w-full">
+<span class="font-score-display text-score-display text-on-surface">0</span>
+</div>
+<div class="absolute bottom-4 left-0 right-0 text-center text-on-surface-variant opacity-60 font-body-md text-body-md">
+                    Ketuk untuk tambah skor
+                </div>
+</section>
+<!-- Center Column: Status & Controls -->
+<section class="flex-[1.2] flex flex-col gap-4">
+<!-- Match Progress -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="font-body-lg text-body-lg text-on-surface">Reli 0 dari 21</span>
+<span class="font-label-caps text-label-caps text-primary">AWAL PERTANDINGAN</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-300" style="width: 2%;"></div>
+</div>
+</div>
+<!-- Middle Content Area (Flex-1) -->
+<div class="flex-1 flex flex-col gap-4">
+<!-- Servis Selection (Shows at 0-0) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col items-center justify-center flex-1 gap-4 border border-primary-container/30">
+<h3 class="font-headline-md text-headline-md text-on-surface text-center">Pilih Tim Servis Pertama</h3>
+<div class="flex gap-4 w-full justify-center">
+<button class="bg-primary-container text-on-primary-container font-headline-md text-headline-md px-6 py-3 rounded-lg shadow-sm hover:bg-opacity-90 active:scale-95 transition-all flex-1 max-w-[140px]">
+                                Tim A
+                            </button>
+<button class="bg-surface-container-high text-on-surface font-headline-md text-headline-md px-6 py-3 rounded-lg shadow-sm hover:bg-surface-variant active:scale-95 transition-all flex-1 max-w-[140px]">
+                                Tim B
+                            </button>
+</div>
+</div>
+<!-- Current Servis Status (Hidden initially, but included in layout) -->
+<!-- 
+                    <div class="bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-col items-center justify-center flex-1">
+                        <div class="bg-secondary text-on-secondary px-3 py-1 rounded-full font-label-caps text-label-caps mb-2">SERVIS SEKARANG</div>
+                        <span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">Tim A</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant">Sisa servis: 5 dari 5</span>
+                    </div> 
+                    -->
+</div>
+<!-- Bottom Action Buttons (Horizontal layout for landscape) -->
+<div class="flex gap-4 h-touch-target-min w-full">
+<button class="flex-1 bg-surface-container-lowest border border-surface-container shadow-sm rounded-xl flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined mr-2">undo</span>
+<span class="font-body-md text-body-md font-medium">Batal</span>
+</button>
+<button class="flex-1 bg-surface-container-lowest border border-surface-container shadow-sm rounded-xl flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined mr-2">gavel</span>
+<span class="font-body-md text-body-md font-medium">Aturan</span>
+</button>
+<button class="flex-1 bg-surface-container-lowest border border-surface-container shadow-sm rounded-xl flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</section>
+<!-- Right Column: Tim B Score Card -->
+<section class="flex-1 bg-surface-container-lowest rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-container flex flex-col items-center justify-center p-4 touch-feedback cursor-pointer relative overflow-hidden group">
+<div class="absolute inset-0 bg-surface-container-highest opacity-0 group-active:opacity-30 transition-opacity duration-150"></div>
+<div class="absolute top-4 left-4 right-4 flex justify-between items-start w-full px-4">
+<div class="flex flex-col items-center w-full">
+<span class="font-headline-md text-headline-md text-on-surface mb-1">Tim B</span>
+<div class="flex items-center gap-2 text-on-surface-variant bg-surface-container-low px-3 py-1 rounded-full">
+<span class="font-body-md text-body-md truncate max-w-[120px]">Pemain 3 &amp; Pemain 4</span>
+<span class="material-symbols-outlined text-sm">edit</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex-1 flex items-center justify-center w-full">
+<span class="font-score-display text-score-display text-on-surface">0</span>
+</div>
+<div class="absolute bottom-4 left-0 right-0 text-center text-on-surface-variant opacity-60 font-body-md text-body-md">
+                    Ketuk untuk tambah skor
+                </div>
+</section>
+</main>
+</div>
+</body></html>
