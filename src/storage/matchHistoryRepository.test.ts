@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { addScore21Point, createScore21Match, selectScore21FirstServer } from "../domain/scoring/score21Engine";
+import {
+  addScore21Point,
+  createScore21Match,
+  selectScore21FirstServer,
+  updateScore21Teams
+} from "../domain/scoring/score21Engine";
 import {
   addStandardPoint,
   createStandardMatch,
@@ -10,7 +15,10 @@ import { createScore21HistoryRecord, createStandardHistoryRecord } from "./match
 
 describe("matchHistoryRepository helpers", () => {
   it("creates a Score 21 history record", () => {
-    let match = selectScore21FirstServer(createScore21Match(), "teamA");
+    let match = updateScore21Teams(selectScore21FirstServer(createScore21Match(), "teamA"), {
+      teamA: { players: "Ari / Bima" },
+      teamB: { players: "Citra / Danu" }
+    });
 
     for (let point = 0; point < 21; point += 1) {
       match = addScore21Point(match, point < 11 ? "teamA" : "teamB", {
@@ -22,6 +30,8 @@ describe("matchHistoryRepository helpers", () => {
 
     expect(record?.mode).toBe("score21");
     expect(record?.teamA.score).toBe(11);
+    expect(record?.teamA.players).toBe("Ari / Bima");
+    expect(record?.teamB.players).toBe("Citra / Danu");
     expect(record?.totalReli).toBe(21);
   });
 

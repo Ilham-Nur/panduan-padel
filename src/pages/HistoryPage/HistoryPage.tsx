@@ -48,6 +48,7 @@ export function HistoryPage() {
               <div>
                 <span className="eyebrow">{getModeLabel(record)}</span>
                 <strong>{getScoreLine(record)}</strong>
+                <span className="history-card__players">{getPlayersLine(record)}</span>
                 <span>{getWinnerText(record)}</span>
               </div>
               <dl>
@@ -105,6 +106,15 @@ function getWinnerText(record: MatchHistoryRecord): string {
   }
 
   return "Pertandingan diakhiri tanpa pemenang";
+}
+
+function getPlayersLine(record: MatchHistoryRecord): string {
+  return `Pemain: ${formatPlayers(record.teamA.players)} vs ${formatPlayers(record.teamB.players)}`;
+}
+
+function formatPlayers(players: string): string {
+  const trimmedPlayers = players.trim();
+  return trimmedPlayers.length > 0 ? trimmedPlayers : "Belum diisi";
 }
 
 function getFormatLabel(format: string): string {

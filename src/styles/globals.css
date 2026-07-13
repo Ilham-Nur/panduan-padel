@@ -165,6 +165,11 @@ svg {
   font: var(--font-body-md);
 }
 
+.history-card .history-card__players {
+  color: var(--color-text-variant);
+  font: 500 14px / 20px "Inter", Arial, sans-serif;
+}
+
 .history-card dl {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
