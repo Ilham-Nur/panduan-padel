@@ -23,6 +23,27 @@ npm.cmd run build
 
 Gunakan `npm.cmd` di PowerShell Windows jika `npm.ps1` diblokir oleh execution policy.
 
+## Deploy GitHub Pages
+
+Project ini disiapkan untuk GitHub Pages di repo `Ilham-Nur/panduan-padel`, sehingga URL publiknya:
+
+```text
+https://ilham-nur.github.io/panduan-padel/
+```
+
+Langkah deploy:
+
+1. Push perubahan ke branch `master` atau `main`.
+2. Buka repo GitHub.
+3. Masuk ke `Settings > Pages`.
+4. Pada `Build and deployment`, pilih `Source: GitHub Actions`.
+5. Tunggu workflow `Deploy static content to Pages` selesai.
+
+Setelah URL aktif, install PWA dari HP:
+
+- Android: buka URL di Chrome, lalu pilih `Install app`.
+- iPhone: buka URL di Safari, lalu pilih `Share > Add to Home Screen`.
+
 ## Struktur Penting
 
 - `AGENTS.md` - aturan utama untuk agent AI.
