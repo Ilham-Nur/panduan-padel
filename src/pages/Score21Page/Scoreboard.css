@@ -507,7 +507,9 @@
   }
 
   .scoreboard-center {
-    gap: 10px;
+    display: grid;
+    grid-template-rows: auto minmax(96px, 1fr) 42px;
+    gap: 8px;
   }
 
   .score-card__team {
@@ -553,52 +555,67 @@
   }
 
   .match-progress {
-    padding: 10px;
+    padding: 8px 10px;
+  }
+
+  .match-progress > div:first-child {
+    align-items: center;
   }
 
   .match-progress strong {
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .match-progress span {
+    font-size: 10px;
+    line-height: 13px;
+  }
+
+  .match-progress__track {
+    height: 6px;
+    margin-top: 6px;
   }
 
   .serve-picker {
-    gap: 10px;
-    padding: 10px;
+    align-self: stretch;
+    gap: 7px;
+    padding: 8px 10px;
   }
 
   .match-stats {
     gap: 8px;
-    margin-top: 8px;
+    margin-top: 6px;
   }
 
   .match-stats div {
-    padding: 6px 8px;
+    padding: 4px 8px;
   }
 
   .match-stats dt {
     font-size: 10px;
-    line-height: 14px;
+    line-height: 12px;
   }
 
   .match-stats dd {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 17px;
   }
 
   .serve-picker h2 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 19px;
   }
 
   .serve-picker p {
     max-width: 230px;
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 15px;
   }
 
   .serve-picker div,
   .scoreboard-actions {
-    gap: 10px;
+    gap: 8px;
   }
 
   .serve-picker .standard-settings {
@@ -614,10 +631,10 @@
 
   .serve-picker .button,
   .scoreboard-actions .button {
-    min-height: 44px;
-    padding: 8px 10px;
-    font-size: 13px;
-    line-height: 17px;
+    min-height: 38px;
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 15px;
   }
 
   .scoreboard-actions .button:last-child {
